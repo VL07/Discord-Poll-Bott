@@ -136,6 +136,7 @@ async def on_message(message):
             embedvar.add_field(name="Normal poll", value=f"`{PREFIX}np title, awnser one, awnser two, etc`\n`title`: the poll title, `awnser`: the valid awnsers for the poll", inline=True)
             embedvar.add_field(name="Change prefix", value=f"`{PREFIX}cp new prefix`\n`new prefix`: the new prefix pr all of the commands", inline=True)
             embedvar.add_field(name="Role poll", value=f"`{PREFIX}rp title, awnser one, role one`\n`title`: the poll title, `awnser`: the valid awnsers for the poll, `role`: the role you get when you react with the corresponding role", inline=False)
+            embedvar.add_field(name="Sourcecode", value=f"`{PREFIX}source`", inline=True)
 
             embedvar.set_footer(text=f"If you don't understand ask someone who knows how to use {client.user.name}")
             embedvar.set_author(name=message.author.name, icon_url=message.author.avatar_url)
@@ -199,6 +200,13 @@ async def on_message(message):
             print("ROLES LIST: " + str(CHECKROLEPOLLS))
             await message.delete()
 
+        elif message.content.startswith(PREFIX + "source"):
+            embedvar = discord.Embed(title="Sourse code", description="The bots source code", color=0x00ff00, url="https://github.com/VL07/Discord-Poll-Bott/")
+            embedvar.set_footer(text=f"{message.author} wanted the source code", icon_url=message.author.avatar_url)
+
+            await message.channel.send(embed=embedvar)
+
+            await message.delete()
 
 
             
